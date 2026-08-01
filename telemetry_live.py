@@ -197,7 +197,11 @@ def compact_frame(snap: dict[str, Any] | None = None) -> dict[str, Any]:
         "track": session.get("track") or "Unknown",
         "session": f"S{session.get('session_id', 0)}",
         "lap": lap,
-        "total_laps": int(session.get("max_laps") or 0) or None,
+        "total_laps": (
+            None
+            if int(session.get("max_laps") or 0) <= 0 or int(session.get("max_laps") or 0) > 500
+            else int(session.get("max_laps") or 0)
+        ),
         "progress_frac": progress,
         "place": int(player.get("place") or 0),
         "driver": session.get("player") or player.get("driver"),
