@@ -1,0 +1,10 @@
+.env
+__pycache__/
+*.pyc
+.venv/
+venv/
+data/fastf1_cache/
+data/chroma/
+data/docs/
+*.egg-info/
+.pytest_cache/
