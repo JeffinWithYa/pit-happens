@@ -120,6 +120,8 @@ def post_agent(base_url: str, payload: dict) -> None:
         "confidence_pct": int(payload.get("confidence_pct") or 70),
         "evidence": list(payload.get("evidence") or [])[:6],
         "rag_refs": list(payload.get("rag_refs") or [])[:4],
+        # UI auto-TTS only for source=coach (LIVE RF1 / Hermes posts stay silent)
+        "source": "coach",
     }
     res = requests.post(f"{base_url.rstrip('/')}/api/agent", json=body, timeout=30)
     res.raise_for_status()

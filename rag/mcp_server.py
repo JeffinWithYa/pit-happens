@@ -168,6 +168,8 @@ def pitcall_post_agent(
         "evidence": (evidence or [])[:6],
         "rag_refs": (rag_refs or [])[:4],
         "regulation_citation": regulation_citation,
+        # Transcript only — UI auto-TTS is reserved for AUTO RADIO (source=coach)
+        "source": "hermes",
     }
     try:
         res = requests.post(url, json=payload, timeout=10)
